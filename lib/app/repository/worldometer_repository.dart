@@ -1,5 +1,5 @@
 import 'package:covid_flutter_app/app/modules/countries/models/country_model.dart';
-import 'package:covid_flutter_app/app/modules/countries/models/info_world.dart';
+import 'package:covid_flutter_app/app/modules/home/models/info_world.dart';
 import 'package:dio/dio.dart';
 
 class WorldometerRepository {

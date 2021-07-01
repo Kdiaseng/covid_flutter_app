@@ -32,6 +32,7 @@ dependencies:
   dio: ^4.0.0
   mobx: ^2.0.1
   flutter_mobx:
+  skeleton_animation: ^0.1.4
 
 dev_dependencies:
   mobx_codegen:

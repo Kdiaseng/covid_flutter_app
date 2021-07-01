@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skeleton_animation/skeleton_animation.dart';
 
 class CardInfo extends StatelessWidget {
   final String title;
@@ -19,7 +20,7 @@ class CardInfo extends StatelessWidget {
       elevation: 5,
       color: color,
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,16 +29,18 @@ class CardInfo extends StatelessWidget {
               title,
               style: TextStyle(color: Colors.white),
             ),
-            Text(
-              "$value",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            ),
+            _buildTextVale(),
           ],
         ),
       ),
     );
   }
+
+  _buildTextVale() => value != null
+      ? Text(
+          value.toString(),
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+        )
+      : Skeleton(height: 15, width: 100, style: SkeletonStyle.text);
 }

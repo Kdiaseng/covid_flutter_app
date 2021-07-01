@@ -24,6 +24,39 @@ mixin _$CountryController on _CountryController, Store {
     });
   }
 
+  final _$countrySelectedAtom =
+      Atom(name: '_CountryController.countrySelected');
+
+  @override
+  CountryModel get countrySelected {
+    _$countrySelectedAtom.reportRead();
+    return super.countrySelected;
+  }
+
+  @override
+  set countrySelected(CountryModel value) {
+    _$countrySelectedAtom.reportWrite(value, super.countrySelected, () {
+      super.countrySelected = value;
+    });
+  }
+
+  final _$isLoadCountrySelectedAtom =
+      Atom(name: '_CountryController.isLoadCountrySelected');
+
+  @override
+  bool get isLoadCountrySelected {
+    _$isLoadCountrySelectedAtom.reportRead();
+    return super.isLoadCountrySelected;
+  }
+
+  @override
+  set isLoadCountrySelected(bool value) {
+    _$isLoadCountrySelectedAtom.reportWrite(value, super.isLoadCountrySelected,
+        () {
+      super.isLoadCountrySelected = value;
+    });
+  }
+
   final _$getInfoCountriesAsyncAction =
       AsyncAction('_CountryController.getInfoCountries');
 
@@ -32,10 +65,21 @@ mixin _$CountryController on _CountryController, Store {
     return _$getInfoCountriesAsyncAction.run(() => super.getInfoCountries());
   }
 
+  final _$getInfoByCountriesAsyncAction =
+      AsyncAction('_CountryController.getInfoByCountries');
+
+  @override
+  Future getInfoByCountries(String country) {
+    return _$getInfoByCountriesAsyncAction
+        .run(() => super.getInfoByCountries(country));
+  }
+
   @override
   String toString() {
     return '''
-countries: ${countries}
+countries: ${countries},
+countrySelected: ${countrySelected},
+isLoadCountrySelected: ${isLoadCountrySelected}
     ''';
   }
 }

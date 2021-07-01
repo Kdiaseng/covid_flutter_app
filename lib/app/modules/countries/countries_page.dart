@@ -1,5 +1,6 @@
 import 'package:covid_flutter_app/app/modules/countries/components/item_country.dart';
 import 'package:covid_flutter_app/app/modules/countries/country_controller.dart';
+import 'package:covid_flutter_app/app/modules/countries/components/item_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -24,22 +25,28 @@ class _CountriesPageState extends State<CountriesPage> {
     );
   }
 
-  _buildBody() =>
-       Observer(
-          builder: (_) => ListView.separated(
-            itemBuilder: (_, index) {
-              return ItemCountry(
-                countryModel: controller.countries[index],
-                onClick: () {
-                  Modular.to.pushNamed('/countries/details');
+  _buildBody() => Observer(
+        builder: (_) => controller.isCountriesLoaded
+            ? ListView.separated(
+                itemBuilder: (_, index) {
+                  return ItemCountry(
+                    countryModel: controller.countries[index],
+                    onClick: () {
+                      Modular.to.pushNamed(
+                          '/countries/details/${controller.countries[index].country}');
+                    },
+                  );
                 },
-              );
-            },
-            itemCount: controller.countries.length,
-            separatorBuilder: (BuildContext context, int index) {
-              return Container(height: 10);
-            },
-          ),
-        );
+                itemCount: controller.countries.length,
+                separatorBuilder: (BuildContext context, int index) {
+                  return Container(height: 10);
+                },
+              )
+            : _buildListLoading(),
+      );
 
+  _buildListLoading() => ListView.separated(
+      itemBuilder: (_, index) => ItemLoading(),
+      separatorBuilder: (_, index) => Container(height: 10),
+      itemCount: 100);
 }

@@ -16,6 +16,9 @@ class CountriesModule extends Module {
   // TODO: implement routes
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (_, args) => CountriesPage()),
-        ChildRoute('/details', child: (_, args) => CountryDetailsPage())
+        ChildRoute('/details/:countryName',
+            child: (_, args) => CountryDetailsPage(
+                  countryName: args.params['countryName'],
+                ))
       ];
 }

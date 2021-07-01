@@ -17,9 +17,24 @@ abstract class _CountryController with Store {
   @observable
   var countries = ObservableList<CountryModel>.of([]);
 
+  @observable
+  CountryModel countrySelected;
+
   @action
   getInfoCountries() async {
     final listCountries = await repository.getInfoCountries();
     countries = listCountries.asObservable();
   }
+
+  @observable
+  bool isLoadCountrySelected = false;
+
+  @action
+  getInfoByCountries(String country) async {
+    isLoadCountrySelected = false;
+    countrySelected = await repository.getInfoByCountry(country);
+    isLoadCountrySelected = true;
+  }
+
+  bool get isCountriesLoaded => countries.isNotEmpty;
 }

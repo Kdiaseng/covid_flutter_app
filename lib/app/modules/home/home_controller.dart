@@ -1,4 +1,4 @@
-import 'package:covid_flutter_app/app/modules/home/models/info_world.dart';
+import 'package:covid_flutter_app/app/modules/home/models/world_info.dart';
 import 'package:covid_flutter_app/app/repository/worldometer_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -15,7 +15,7 @@ abstract class _HomeController with Store {
   }
 
   @observable
-  InfoWorld worldInfo;
+  WorldInfo worldInfo;
 
   @computed
   double get cases => worldInfoIsNotNull ? worldInfo.cases.toDouble() : null;

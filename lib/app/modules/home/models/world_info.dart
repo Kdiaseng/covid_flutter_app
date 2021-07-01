@@ -1,4 +1,4 @@
-class InfoWorld {
+class WorldInfo {
   int updated;
   int cases;
   int todayCases;
@@ -22,7 +22,7 @@ class InfoWorld {
   double criticalPerOneMillion;
   int affectedCountries;
 
-  InfoWorld({
+  WorldInfo({
       this.updated, 
       this.cases, 
       this.todayCases, 
@@ -46,7 +46,7 @@ class InfoWorld {
       this.criticalPerOneMillion, 
       this.affectedCountries});
 
-  InfoWorld.fromJson(dynamic json) {
+  WorldInfo.fromJson(dynamic json) {
     updated = json["updated"];
     cases = json["cases"];
     todayCases = json["todayCases"];

@@ -45,13 +45,13 @@ mixin _$HomeController on _HomeController, Store {
   final _$worldInfoAtom = Atom(name: '_HomeController.worldInfo');
 
   @override
-  InfoWorld get worldInfo {
+  WorldInfo get worldInfo {
     _$worldInfoAtom.reportRead();
     return super.worldInfo;
   }
 
   @override
-  set worldInfo(InfoWorld value) {
+  set worldInfo(WorldInfo value) {
     _$worldInfoAtom.reportWrite(value, super.worldInfo, () {
       super.worldInfo = value;
     });

@@ -13,7 +13,6 @@ class CountryModel {
   int active;
   int critical;
   int casesPerOneMillion;
-  int deathsPerOneMillion;
   int tests;
   int testsPerOneMillion;
   int population;
@@ -21,10 +20,7 @@ class CountryModel {
   int oneCasePerPeople;
   int oneDeathPerPeople;
   int oneTestPerPeople;
-  int undefined;
-  double activePerOneMillion;
-  double recoveredPerOneMillion;
-  double criticalPerOneMillion;
+
 
   CountryModel({
       this.updated, 
@@ -38,19 +34,15 @@ class CountryModel {
       this.todayRecovered, 
       this.active, 
       this.critical, 
-      this.casesPerOneMillion, 
-      this.deathsPerOneMillion, 
+      this.casesPerOneMillion,
       this.tests, 
       this.testsPerOneMillion, 
       this.population, 
       this.continent, 
       this.oneCasePerPeople, 
       this.oneDeathPerPeople, 
-      this.oneTestPerPeople, 
-      this.undefined, 
-      this.activePerOneMillion, 
-      this.recoveredPerOneMillion, 
-      this.criticalPerOneMillion});
+      this.oneTestPerPeople,
+  });
 
   CountryModel.fromJson(dynamic json) {
     updated = json["updated"];
@@ -65,7 +57,6 @@ class CountryModel {
     active = json["active"];
     critical = json["critical"];
     casesPerOneMillion = json["casesPerOneMillion"];
-    deathsPerOneMillion = json["deathsPerOneMillion"];
     tests = json["tests"];
     testsPerOneMillion = json["testsPerOneMillion"];
     population = json["population"];
@@ -73,10 +64,6 @@ class CountryModel {
     oneCasePerPeople = json["oneCasePerPeople"];
     oneDeathPerPeople = json["oneDeathPerPeople"];
     oneTestPerPeople = json["oneTestPerPeople"];
-    undefined = json["undefined"];
-    activePerOneMillion = json["activePerOneMillion"];
-    recoveredPerOneMillion = json["recoveredPerOneMillion"];
-    criticalPerOneMillion = json["criticalPerOneMillion"];
   }
 
   Map<String, dynamic> toJson() {
@@ -95,7 +82,6 @@ class CountryModel {
     map["active"] = active;
     map["critical"] = critical;
     map["casesPerOneMillion"] = casesPerOneMillion;
-    map["deathsPerOneMillion"] = deathsPerOneMillion;
     map["tests"] = tests;
     map["testsPerOneMillion"] = testsPerOneMillion;
     map["population"] = population;
@@ -103,10 +89,6 @@ class CountryModel {
     map["oneCasePerPeople"] = oneCasePerPeople;
     map["oneDeathPerPeople"] = oneDeathPerPeople;
     map["oneTestPerPeople"] = oneTestPerPeople;
-    map["undefined"] = undefined;
-    map["activePerOneMillion"] = activePerOneMillion;
-    map["recoveredPerOneMillion"] = recoveredPerOneMillion;
-    map["criticalPerOneMillion"] = criticalPerOneMillion;
     return map;
   }
 

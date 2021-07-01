@@ -1,9 +1,15 @@
+import 'package:covid_flutter_app/app/modules/countries/models/country_model.dart';
 import 'package:flutter/material.dart';
 
 class ItemCountry extends StatelessWidget {
   final Function onClick;
+  final CountryModel countryModel;
 
-  const ItemCountry({Key key, @required this.onClick}) : super(key: key);
+  const ItemCountry({
+    Key key,
+    @required this.onClick,
+    @required this.countryModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +25,15 @@ class ItemCountry extends StatelessWidget {
           child: ListTile(
             leading: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX48JYpPPow8zQXp34oKHyqRbECSs1dUpOdw&usqp=CAU')),
-            title: Text('Brazil'),
-            subtitle: Text('American'),
+                    countryModel.countryInfo.flag)),
+            title: Text(countryModel.country),
+            subtitle: Text(countryModel.continent),
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Population"),
                 SizedBox(height: 5),
-                Text("270.000.000"),
+                Text(countryModel.population.toString()),
               ],
             ),
           ),

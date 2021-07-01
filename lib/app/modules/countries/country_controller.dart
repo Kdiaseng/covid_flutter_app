@@ -10,6 +10,10 @@ class CountryController = _CountryController with _$CountryController;
 abstract class _CountryController with Store {
   final repository = Modular.get<WorldometerRepository>();
 
+  _CountryController() {
+    getInfoCountries();
+  }
+
   @observable
   var countries = ObservableList<CountryModel>.of([]);
 

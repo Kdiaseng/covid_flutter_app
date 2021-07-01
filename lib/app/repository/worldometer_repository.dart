@@ -16,7 +16,7 @@ class WorldometerRepository {
 
   Future<List<CountryModel>> getInfoCountries() async {
     try {
-      Response response = await Dio().get('$url/coutries');
+      Response response = await Dio().get('$url/countries');
       final responseList = response.data as List;
 
       return responseList.map((json) => CountryModel.fromJson(json)).toList();

@@ -1,5 +1,4 @@
 import 'package:covid_flutter_app/app/modules/countries/components/item_country.dart';
-import 'package:covid_flutter_app/app/modules/home/components/container_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

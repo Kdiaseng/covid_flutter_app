@@ -1,3 +1,4 @@
+import 'package:covid_flutter_app/app/modules/countries/components/item_info.dart';
 import 'package:flutter/material.dart';
 
 class CountryDetailsPage extends StatefulWidget {
@@ -11,8 +12,32 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('DETAILS COUNTRY'),
+      body: NestedScrollView(
+        headerSliverBuilder: (_, innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              expandedHeight: 200,
+              pinned: true,
+              floating: true,
+              flexibleSpace: Stack(
+                children: [
+                  Positioned.fill(
+                      child: Image.network(
+                    "https://disease.sh/assets/img/flags/br.png",
+                    fit: BoxFit.cover,
+                  ))
+                ],
+              ),
+            )
+          ];
+        },
+        body: Center(
+          child: ListView.separated(
+              itemBuilder: (_, index) =>
+                  ItemInfo(),
+              separatorBuilder: (_, index) => SizedBox(height: 15),
+              itemCount: 10),
+        ),
       ),
     );
   }

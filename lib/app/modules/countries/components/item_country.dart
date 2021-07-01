@@ -7,27 +7,29 @@ class ItemCountry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      elevation: 5,
-      color: Colors.amber,
-      child: InkWell(
-        onTap: () {
-          onClick();
-        },
-        child: ListTile(
-          leading: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX48JYpPPow8zQXp34oKHyqRbECSs1dUpOdw&usqp=CAU')),
-          title: Text('Brazil'),
-          subtitle: Text('American'),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Population"),
-              SizedBox(height: 5),
-              Text("270.000.000"),
-            ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 5, bottom: 5),
+      child: Material(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        elevation: 5,
+        child: InkWell(
+          onTap: () {
+            onClick();
+          },
+          child: ListTile(
+            leading: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX48JYpPPow8zQXp34oKHyqRbECSs1dUpOdw&usqp=CAU')),
+            title: Text('Brazil'),
+            subtitle: Text('American'),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Population"),
+                SizedBox(height: 5),
+                Text("270.000.000"),
+              ],
+            ),
           ),
         ),
       ),

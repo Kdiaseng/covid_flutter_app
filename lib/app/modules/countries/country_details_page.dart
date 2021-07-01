@@ -19,22 +19,18 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
               expandedHeight: 200,
               pinned: true,
               floating: true,
-              flexibleSpace: Stack(
-                children: [
-                  Positioned.fill(
-                      child: Image.network(
-                    "https://disease.sh/assets/img/flags/br.png",
-                    fit: BoxFit.cover,
-                  ))
-                ],
+              flexibleSpace: FlexibleSpaceBar(
+                background: Image.network(
+                    'https://disease.sh/assets/img/flags/br.png',
+                    fit: BoxFit.cover),
+                title: Text('Brazil'),
               ),
             )
           ];
         },
         body: Center(
           child: ListView.separated(
-              itemBuilder: (_, index) =>
-                  ItemInfo(),
+              itemBuilder: (_, index) => ItemInfo(),
               separatorBuilder: (_, index) => SizedBox(height: 15),
               itemCount: 10),
         ),

@@ -3,6 +3,8 @@ import 'package:covid_flutter_app/app/modules/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'components/card_welcome.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
 
@@ -22,18 +24,11 @@ class _HomePageState extends State<HomePage> {
           Modular.to.pushNamed('/countries');
         },
       ),
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: _buildBody(),
+      body: SafeArea(child: _buildBody()),
     );
   }
 
   Widget _buildBody() => Column(
-        children: [
-          Text('Welcome'),
-          SizedBox(height: 40),
-          ContainerInformation()
-        ],
+        children: [CardWelcome(), SizedBox(height: 40), ContainerInformation()],
       );
 }

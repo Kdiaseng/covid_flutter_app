@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ItemInfo extends StatelessWidget {
-  const ItemInfo({Key key}) : super(key: key);
+  final String title;
+  final String value;
+  final String iso3;
+
+  const ItemInfo({
+    Key key,
+    @required this.title,
+    @required this.value,
+    @required this.iso3,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +27,11 @@ class ItemInfo extends StatelessWidget {
               elevation: 4,
               child: ListTile(
                 title: Text(
-                  'deaths',
+                  title,
                   textAlign: TextAlign.center,
                 ),
                 trailing: Text(
-                  '35.1121',
+                  value,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -31,7 +40,7 @@ class ItemInfo extends StatelessWidget {
           SizedBox(
             height: 70,
             width: 70,
-            child: CircleAvatar(child: Text('BR')),
+            child: CircleAvatar(child: Text(iso3)),
           )
         ],
       ),

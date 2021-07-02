@@ -5,6 +5,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:skeleton_animation/skeleton_animation.dart';
 
+import 'components/item_info_loading.dart';
+
 class CountryDetailsPage extends StatefulWidget {
   final String countryName;
 
@@ -31,33 +33,63 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
         headerSliverBuilder: (_, innerBoxIsScrolled) {
           return [
             Observer(
-                builder: (_) => SliverAppBar(
-                      expandedHeight: 200,
-                      pinned: true,
-                      floating: true,
-                      flexibleSpace: FlexibleSpaceBar(
-                        background: controller.isLoadCountrySelected
-                            ? Image.network(
-                                controller.countrySelected.countryInfo.flag,
-                                fit: BoxFit.cover)
-                            : Container(color: Colors.grey.shade300),
-                        title: controller.isLoadCountrySelected
-                            ? Text(controller.countrySelected.country)
-                            : Skeleton(
-                                height: 15,
-                                width: 100,
-                                style: SkeletonStyle.text),
-                      ),
-                    )),
+              builder: (_) => SliverAppBar(
+                expandedHeight: 200,
+                pinned: true,
+                floating: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: controller.isLoadCountrySelected
+                      ? Image.network(
+                          controller.countrySelected.countryInfo.flag,
+                          fit: BoxFit.cover)
+                      : Container(color: Colors.grey.shade300),
+                  title: controller.isLoadCountrySelected
+                      ? Text(controller.countrySelected.country)
+                      : Skeleton(
+                          height: 15, width: 100, style: SkeletonStyle.text),
+                ),
+              ),
+            ),
           ];
         },
         body: Center(
-          child: ListView.separated(
-              itemBuilder: (_, index) => ItemInfo(),
-              separatorBuilder: (_, index) => SizedBox(height: 15),
-              itemCount: 10),
+          child: Observer(
+            builder: (_) => controller.isLoadCountrySelected
+                ? ListView(children: _buildInfoList())
+                : ItemInfoLoading(),
+          ),
         ),
       ),
     );
+  }
+
+  List<Widget> _buildInfoList() {
+    final countrySelected = controller.countrySelected;
+    return [
+      ItemInfo(
+          title: "Population",
+          value: countrySelected.population.toString(),
+          iso3: countrySelected.countryInfo.iso3),
+      ItemInfo(
+          title: "Cases",
+          value: countrySelected.cases.toString(),
+          iso3: countrySelected.countryInfo.iso3),
+      ItemInfo(
+          title: "Deaths",
+          value: countrySelected.deaths.toString(),
+          iso3: countrySelected.countryInfo.iso3),
+      ItemInfo(
+          title: "Recovered",
+          value: countrySelected.recovered.toString(),
+          iso3: countrySelected.countryInfo.iso3),
+      ItemInfo(
+          title: "Tests",
+          value: countrySelected.tests.toString(),
+          iso3: countrySelected.countryInfo.iso3),
+      ItemInfo(
+          title: "Critical",
+          value: countrySelected.critical.toString(),
+          iso3: countrySelected.countryInfo.iso3)
+    ];
   }
 }

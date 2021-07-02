@@ -34,7 +34,7 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
           return [
             Observer(
               builder: (_) => SliverAppBar(
-                expandedHeight: 200,
+                expandedHeight: 170,
                 pinned: true,
                 floating: true,
                 flexibleSpace: FlexibleSpaceBar(
@@ -70,22 +70,27 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
           title: "Population",
           value: countrySelected.population.toString(),
           iso3: countrySelected.countryInfo.iso3),
+      SizedBox(height: 10),
       ItemInfo(
           title: "Cases",
           value: countrySelected.cases.toString(),
           iso3: countrySelected.countryInfo.iso3),
+      SizedBox(height: 10),
       ItemInfo(
           title: "Deaths",
           value: countrySelected.deaths.toString(),
           iso3: countrySelected.countryInfo.iso3),
+      SizedBox(height: 10),
       ItemInfo(
           title: "Recovered",
           value: countrySelected.recovered.toString(),
           iso3: countrySelected.countryInfo.iso3),
+      SizedBox(height: 10),
       ItemInfo(
           title: "Tests",
           value: countrySelected.tests.toString(),
           iso3: countrySelected.countryInfo.iso3),
+      SizedBox(height: 10),
       ItemInfo(
           title: "Critical",
           value: countrySelected.critical.toString(),

@@ -26,9 +26,15 @@ class ItemInfo extends StatelessWidget {
                   bottomRight: Radius.circular(8)),
               elevation: 4,
               child: ListTile(
-                title: Text(
-                  title,
-                  textAlign: TextAlign.center,
+                title: Row(
+                  children: [
+                    SizedBox(width: 50),
+                    Text(
+                      title,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                    ),
+                  ],
                 ),
                 trailing: Text(
                   value,
@@ -40,7 +46,11 @@ class ItemInfo extends StatelessWidget {
           SizedBox(
             height: 70,
             width: 70,
-            child: CircleAvatar(child: Text(iso3)),
+            child: CircleAvatar(
+                child: Text(
+              iso3,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            )),
           )
         ],
       ),

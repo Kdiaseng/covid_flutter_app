@@ -23,11 +23,19 @@ class ItemInfoLoading extends StatelessWidget {
                     topRight: Radius.circular(8),
                     bottomRight: Radius.circular(8)),
                 elevation: 4,
-                child: ListTile(
-                  title: Skeleton(
-                      height: 15, width: 50, style: SkeletonStyle.text),
-                  trailing: Skeleton(
-                      height: 15, width: 50, style: SkeletonStyle.text),
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 35),
+                        child: Skeleton(
+                            height: 15, width: 100, style: SkeletonStyle.text),
+                      ),
+                      Skeleton(height: 15, width: 50, style: SkeletonStyle.text)
+                    ],
+                  ),
                 ),
               ),
             ),

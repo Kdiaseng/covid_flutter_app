@@ -15,11 +15,26 @@ class CountriesPage extends StatefulWidget {
 class _CountriesPageState extends State<CountriesPage> {
   final controller = Modular.get<CountryController>();
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Countries'),
+        titleSpacing: 0.0,
+        title: Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Material(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            elevation: 4,
+            child: TextFormField(
+              onChanged: controller.changeFilter,
+              decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+                hintText: 'Enter to country',
+                suffixIcon: Icon(Icons.search),
+              ),
+            ),
+          ),
+        ),
       ),
       body: _buildBody(),
     );
@@ -28,18 +43,19 @@ class _CountriesPageState extends State<CountriesPage> {
   _buildBody() => Observer(
         builder: (_) => controller.isCountriesLoaded
             ? ListView.separated(
+                shrinkWrap: true,
                 itemBuilder: (_, index) {
                   return ItemCountry(
-                    countryModel: controller.countries[index],
+                    countryModel: controller.countriesFiltered[index],
                     onClick: () {
                       Modular.to.pushNamed(
-                          '/countries/details/${controller.countries[index].country}');
+                          '/countries/details/${controller.countriesFiltered[index].country}');
                     },
                   );
                 },
-                itemCount: controller.countries.length,
+                itemCount: controller.countriesFiltered.length,
                 separatorBuilder: (BuildContext context, int index) {
-                  return Container(height: 10);
+                  return Container(height: 8);
                 },
               )
             : ItemCountryLoading(),

@@ -38,6 +38,7 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
                 pinned: true,
                 floating: true,
                 flexibleSpace: FlexibleSpaceBar(
+                  titlePadding: EdgeInsets.all(16.0),
                   background: controller.isLoadCountrySelected
                       ? Image.network(
                           controller.countrySelected.countryInfo.flag,

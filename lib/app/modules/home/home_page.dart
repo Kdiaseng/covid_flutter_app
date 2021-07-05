@@ -29,6 +29,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildBody() => Column(
-        children: [CardWelcome(), SizedBox(height: 40), ContainerInformation()],
+        children: [
+          CardWelcome(),
+          SizedBox(height: 40),
+          ContainerInformation(),
+        ],
       );
 }

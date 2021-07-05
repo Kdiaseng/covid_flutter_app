@@ -9,6 +9,32 @@ part of 'country_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CountryController on _CountryController, Store {
+  Computed<ObservableList<CountryModel>> _$countriesFilteredComputed;
+
+  @override
+  ObservableList<CountryModel> get countriesFiltered =>
+      (_$countriesFilteredComputed ??= Computed<ObservableList<CountryModel>>(
+              () => super.countriesFiltered,
+              name: '_CountryController.countriesFiltered'))
+          .value;
+
+  final _$textControllerFilterAtom =
+      Atom(name: '_CountryController.textControllerFilter');
+
+  @override
+  TextEditingController get textControllerFilter {
+    _$textControllerFilterAtom.reportRead();
+    return super.textControllerFilter;
+  }
+
+  @override
+  set textControllerFilter(TextEditingController value) {
+    _$textControllerFilterAtom.reportWrite(value, super.textControllerFilter,
+        () {
+      super.textControllerFilter = value;
+    });
+  }
+
   final _$countriesAtom = Atom(name: '_CountryController.countries');
 
   @override
@@ -21,6 +47,21 @@ mixin _$CountryController on _CountryController, Store {
   set countries(ObservableList<CountryModel> value) {
     _$countriesAtom.reportWrite(value, super.countries, () {
       super.countries = value;
+    });
+  }
+
+  final _$filterAtom = Atom(name: '_CountryController.filter');
+
+  @override
+  String get filter {
+    _$filterAtom.reportRead();
+    return super.filter;
+  }
+
+  @override
+  set filter(String value) {
+    _$filterAtom.reportWrite(value, super.filter, () {
+      super.filter = value;
     });
   }
 
@@ -74,12 +115,29 @@ mixin _$CountryController on _CountryController, Store {
         .run(() => super.getInfoByCountries(country));
   }
 
+  final _$_CountryControllerActionController =
+      ActionController(name: '_CountryController');
+
+  @override
+  dynamic changeFilter(String value) {
+    final _$actionInfo = _$_CountryControllerActionController.startAction(
+        name: '_CountryController.changeFilter');
+    try {
+      return super.changeFilter(value);
+    } finally {
+      _$_CountryControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
+textControllerFilter: ${textControllerFilter},
 countries: ${countries},
+filter: ${filter},
 countrySelected: ${countrySelected},
-isLoadCountrySelected: ${isLoadCountrySelected}
+isLoadCountrySelected: ${isLoadCountrySelected},
+countriesFiltered: ${countriesFiltered}
     ''';
   }
 }

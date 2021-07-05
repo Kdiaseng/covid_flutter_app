@@ -57,7 +57,7 @@ class WorldInfo {
     active = json["active"];
     critical = json["critical"];
     casesPerOneMillion = json["casesPerOneMillion"];
-    deathsPerOneMillion = json["deathsPerOneMillion"];
+    deathsPerOneMillion =  json["deathsPerOneMillion"] as double;
     tests = json["tests"];
     testsPerOneMillion = json["testsPerOneMillion"];
     population = json["population"];

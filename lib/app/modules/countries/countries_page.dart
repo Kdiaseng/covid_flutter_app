@@ -2,6 +2,7 @@ import 'package:covid_flutter_app/app/modules/countries/components/item_country.
 import 'package:covid_flutter_app/app/modules/countries/country_controller.dart';
 import 'package:covid_flutter_app/app/modules/countries/components/item_country_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -17,47 +18,55 @@ class _CountriesPageState extends State<CountriesPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        titleSpacing: 0.0,
-        title: Padding(
-          padding: const EdgeInsets.only(right: 16),
-          child: Material(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-            elevation: 4,
-            child: TextFormField(
-              onChanged: controller.changeFilter,
-              decoration: InputDecoration(
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
-                hintText: 'Enter to country',
-                suffixIcon: Icon(Icons.search),
-              ),
-            ),
-          ),
+        appBar: AppBar(
+          titleSpacing: 0.0,
+          title: Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Text('Countries')),
         ),
-      ),
-      body: _buildBody(),
-    );
+        body: Column(
+          children: [_buildSearch, Expanded(child: _buildBody)],
+        ));
   }
 
-  _buildBody() => Observer(
+  get _buildBody => Observer(
         builder: (_) => controller.isCountriesLoaded
             ? ListView.separated(
                 shrinkWrap: true,
                 itemBuilder: (_, index) {
+                  final countryItem = controller.countriesFiltered[index];
                   return ItemCountry(
-                    countryModel: controller.countriesFiltered[index],
+                    color: controller.getColor(),
+                    countryModel: countryItem,
                     onClick: () {
                       Modular.to.pushNamed(
-                          '/countries/details/${controller.countriesFiltered[index].country}');
+                          '/countries/details/${countryItem.country}');
                     },
                   );
                 },
                 itemCount: controller.countriesFiltered.length,
-                separatorBuilder: (BuildContext context, int index) {
-                  return Container(height: 8);
+                separatorBuilder: (_, int index) {
+                  return Container(height: 5);
                 },
               )
             : ItemCountryLoading(),
+      );
+
+  get _buildSearch => Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Material(
+          borderRadius: BorderRadius.all(Radius.circular(25)),
+          elevation: 5,
+          child: TextFormField(
+            onChanged: controller.changeFilter,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(borderSide: BorderSide.none),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+              hintText: 'Enter to country',
+              suffixIcon: Icon(Icons.search),
+            ),
+          ),
+        ),
       );
 }

@@ -29,35 +29,37 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (_, innerBoxIsScrolled) {
-          return [
-            Observer(
-              builder: (_) => SliverAppBar(
-                expandedHeight: 170,
-                pinned: true,
-                floating: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  titlePadding: EdgeInsets.all(16.0),
-                  background: controller.isLoadCountrySelected
-                      ? Image.network(
-                          controller.countrySelected.countryInfo.flag,
-                          fit: BoxFit.cover)
-                      : Container(color: Colors.grey.shade300),
-                  title: controller.isLoadCountrySelected
-                      ? Text(controller.countrySelected.country)
-                      : Skeleton(
-                          height: 15, width: 100, style: SkeletonStyle.text),
+      body: SafeArea(
+        child: NestedScrollView(
+          headerSliverBuilder: (_, innerBoxIsScrolled) {
+            return [
+              Observer(
+                builder: (_) => SliverAppBar(
+                  expandedHeight: 280,
+                  pinned: true,
+                  floating: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                    titlePadding: EdgeInsets.only(left: 45, bottom: 18),
+                    background: controller.isLoadCountrySelected
+                        ? Image.network(
+                            controller.countrySelected.countryInfo.flag,
+                            fit: BoxFit.cover)
+                        : Container(color: Colors.grey.shade300),
+                    title: controller.isLoadCountrySelected
+                        ? Text(controller.countrySelected.country)
+                        : Skeleton(
+                            height: 15, width: 100, style: SkeletonStyle.text),
+                  ),
                 ),
               ),
+            ];
+          },
+          body: Center(
+            child: Observer(
+              builder: (_) => controller.isLoadCountrySelected
+                  ? ListView(children: _buildInfoList())
+                  : ItemInfoLoading(),
             ),
-          ];
-        },
-        body: Center(
-          child: Observer(
-            builder: (_) => controller.isLoadCountrySelected
-                ? ListView(children: _buildInfoList())
-                : ItemInfoLoading(),
           ),
         ),
       ),

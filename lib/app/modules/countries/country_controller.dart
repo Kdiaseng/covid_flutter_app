@@ -1,5 +1,6 @@
 import 'package:covid_flutter_app/app/modules/countries/models/country_model.dart';
 import 'package:covid_flutter_app/app/repository/worldometer_repository.dart';
+import 'package:covid_flutter_app/app/utils/colors_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -10,6 +11,8 @@ class CountryController = _CountryController with _$CountryController;
 
 abstract class _CountryController with Store {
   final repository = Modular.get<WorldometerRepository>();
+
+  int indexColor = 0;
 
   @observable
   TextEditingController textControllerFilter = TextEditingController();
@@ -48,7 +51,7 @@ abstract class _CountryController with Store {
     final list = countries
         .where((e) => e.country.toLowerCase().contains(filter.toLowerCase()))
         .toList();
-    
+
     return list.asObservable();
   }
 
@@ -63,4 +66,14 @@ abstract class _CountryController with Store {
   }
 
   bool get isCountriesLoaded => countries.isNotEmpty;
+
+  Color getColor() {
+    if (indexColor == ColorsApp.listColors.length - 1) {
+      indexColor = 0;
+    }
+    final color = ColorsApp.listColors[indexColor];
+   
+    indexColor++;
+    return color;
+  }
 }

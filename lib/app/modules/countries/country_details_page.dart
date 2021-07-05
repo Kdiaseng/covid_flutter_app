@@ -23,6 +23,10 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
   @override
   void initState() {
     controller.getInfoByCountries(widget.countryName);
+    controller.scrollController
+      ..addListener(() {
+        controller.changeHorizontalTitlePadding();
+      });
     super.initState();
   }
 
@@ -31,15 +35,20 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
     return Scaffold(
       body: SafeArea(
         child: NestedScrollView(
+          controller: controller.scrollController,
           headerSliverBuilder: (_, innerBoxIsScrolled) {
             return [
               Observer(
                 builder: (_) => SliverAppBar(
-                  expandedHeight: 280,
+                  expandedHeight: controller.kExpandedHeight,
                   pinned: true,
                   floating: true,
                   flexibleSpace: FlexibleSpaceBar(
-                    titlePadding: EdgeInsets.only(left: 45, bottom: 18),
+                    collapseMode: CollapseMode.pin,
+                    centerTitle: false,
+                    titlePadding: EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: controller.horizontalTitlePadding),
                     background: controller.isLoadCountrySelected
                         ? Image.network(
                             controller.countrySelected.countryInfo.flag,

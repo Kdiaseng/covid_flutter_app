@@ -35,6 +35,23 @@ mixin _$CountryController on _CountryController, Store {
     });
   }
 
+  final _$horizontalTitlePaddingAtom =
+      Atom(name: '_CountryController.horizontalTitlePadding');
+
+  @override
+  double get horizontalTitlePadding {
+    _$horizontalTitlePaddingAtom.reportRead();
+    return super.horizontalTitlePadding;
+  }
+
+  @override
+  set horizontalTitlePadding(double value) {
+    _$horizontalTitlePaddingAtom
+        .reportWrite(value, super.horizontalTitlePadding, () {
+      super.horizontalTitlePadding = value;
+    });
+  }
+
   final _$countriesAtom = Atom(name: '_CountryController.countries');
 
   @override
@@ -130,9 +147,21 @@ mixin _$CountryController on _CountryController, Store {
   }
 
   @override
+  dynamic changeHorizontalTitlePadding() {
+    final _$actionInfo = _$_CountryControllerActionController.startAction(
+        name: '_CountryController.changeHorizontalTitlePadding');
+    try {
+      return super.changeHorizontalTitlePadding();
+    } finally {
+      _$_CountryControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 textControllerFilter: ${textControllerFilter},
+horizontalTitlePadding: ${horizontalTitlePadding},
 countries: ${countries},
 filter: ${filter},
 countrySelected: ${countrySelected},

@@ -13,12 +13,18 @@ abstract class _CountryController with Store {
   final repository = Modular.get<WorldometerRepository>();
 
   int indexColor = 0;
+  ScrollController scrollController;
+  double kExpandedHeight = 200;
 
   @observable
   TextEditingController textControllerFilter = TextEditingController();
 
+  @observable
+  double horizontalTitlePadding = 20;
+
   _CountryController() {
     getInfoCountries();
+    scrollController = ScrollController();
   }
 
   @observable
@@ -34,6 +40,30 @@ abstract class _CountryController with Store {
   changeFilter(String value) {
     print('$value');
     filter = value;
+  }
+
+  @action
+  changeHorizontalTitlePadding() {
+    const kBasePadding = 25.0;
+    const kMultiplier = 0.5;
+
+    if (scrollController.hasClients) {
+      if (scrollController.offset < (kExpandedHeight / 2)) {
+        // In case 50%-100% of the expanded height is viewed
+        return kBasePadding;
+      }
+
+      if (scrollController.offset > (kExpandedHeight - kToolbarHeight)) {
+        // In case 0% of the expanded height is viewed
+        return (kExpandedHeight / 2 - kToolbarHeight) * kMultiplier +
+            kBasePadding;
+      }
+
+      // In case 0%-50% of the expanded height is viewed
+      horizontalTitlePadding =
+          (scrollController.offset - (kExpandedHeight / 2)) * kMultiplier +
+              kBasePadding;
+    }
   }
 
   @action
@@ -72,7 +102,7 @@ abstract class _CountryController with Store {
       indexColor = 0;
     }
     final color = ColorsApp.listColors[indexColor];
-   
+
     indexColor++;
     return color;
   }

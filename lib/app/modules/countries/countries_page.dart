@@ -18,15 +18,15 @@ class _CountriesPageState extends State<CountriesPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          titleSpacing: 0.0,
-          title: Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: Text('Countries')),
-        ),
-        body: Column(
-          children: [_buildSearch, Expanded(child: _buildBody)],
-        ));
+      appBar: AppBar(
+        title: Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Text('Countries')),
+      ),
+      body: Column(
+        children: [_buildSearch, Expanded(child: _buildBody)],
+      ),
+    );
   }
 
   get _buildBody => Observer(

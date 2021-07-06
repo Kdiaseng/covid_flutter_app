@@ -18,12 +18,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.list),
-        onPressed: () {
-          Modular.to.pushNamed('/countries');
-        },
-      ),
       body: SafeArea(child: _buildBody()),
     );
   }

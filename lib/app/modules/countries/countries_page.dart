@@ -17,14 +17,12 @@ class _CountriesPageState extends State<CountriesPage> {
   final controller = Modular.get<CountryController>();
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Text('Countries')),
-      ),
-      body: Column(
-        children: [_buildSearch, Expanded(child: _buildBody)],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey.withOpacity(.1),
+        body: Column(
+          children: [_buildSearch, Expanded(child: _buildBody)],
+        ),
       ),
     );
   }

@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.withOpacity(.1),
       body: SafeArea(child: _buildBody()),
     );
   }

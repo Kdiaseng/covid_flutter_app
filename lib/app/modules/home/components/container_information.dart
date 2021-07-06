@@ -25,7 +25,7 @@ class _ContainerInformationState extends State<ContainerInformation> {
             children: [
               Expanded(
                 child: SizedBox(
-                  height: 120,
+                  height: 110,
                   child: Observer(
                     builder: (_) => CardInfo(
                       title: 'Cases',
@@ -38,7 +38,7 @@ class _ContainerInformationState extends State<ContainerInformation> {
               SizedBox(width: 15),
               Expanded(
                 child: SizedBox(
-                  height: 120,
+                  height: 110,
                   child: Observer(
                     builder: (_) => CardInfo(
                       title: 'Deaths',
@@ -56,7 +56,7 @@ class _ContainerInformationState extends State<ContainerInformation> {
             children: [
               Expanded(
                 child: SizedBox(
-                  height: 120,
+                  height: 110,
                   child: Observer(
                     builder: (_) => CardInfo(
                       title: 'Recovered',
@@ -69,7 +69,7 @@ class _ContainerInformationState extends State<ContainerInformation> {
               SizedBox(width: 15),
               Expanded(
                 child: SizedBox(
-                  height: 120,
+                  height: 110,
                   child: Observer(
                     builder: (_) => CardInfo(
                       title: 'Tests',
@@ -82,7 +82,7 @@ class _ContainerInformationState extends State<ContainerInformation> {
               SizedBox(width: 15),
               Expanded(
                 child: SizedBox(
-                  height: 120,
+                  height: 110,
                   child: Observer(
                     builder: (_) => CardInfo(
                         title: 'Affected Countries',

@@ -33,6 +33,7 @@ dependencies:
   mobx: ^2.0.1
   flutter_mobx:
   skeleton_animation: ^0.1.4
+  curved_navigation_bar: ^1.0.1
 
 dev_dependencies:
   mobx_codegen:

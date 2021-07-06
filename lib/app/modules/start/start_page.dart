@@ -1,4 +1,5 @@
 import 'package:covid_flutter_app/app/modules/start/start_controller.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -22,8 +23,10 @@ class _StartPageState extends State<StartPage> {
     return Observer(
       builder: (_) => Scaffold(
         body: RouterOutlet(),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: controller.currentIndex,
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 60,
+          backgroundColor: Colors.blueAccent,
+          index: controller.currentIndex,
           onTap: (index) {
             controller.changeCurrentIndex(index);
             switch (index) {
@@ -35,10 +38,9 @@ class _StartPageState extends State<StartPage> {
                 break;
             }
           },
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list_outlined), label: 'Countries'),
+          items: [
+            Icon(Icons.home, size: 30),
+            Icon(Icons.list, size: 30),
           ],
         ),
       ),

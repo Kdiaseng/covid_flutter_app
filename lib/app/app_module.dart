@@ -6,18 +6,13 @@ import 'modules/start/start_page.dart';
 
 class AppModule extends Module {
   @override
-  // TODO: implement binds
   List<Bind<Object>> get binds => [];
 
   @override
-  // TODO: implement routes
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (_, __) => StartPage(), children: [
           ModuleRoute('/home', module: HomeModule()),
           ModuleRoute('/countries', module: CountriesModule()),
         ])
-        // ModuleRoute('/', module: StartModule()),
-        // ModuleRoute('/home', module: HomeModule()),
-        // ModuleRoute('/countries', module: CountriesModule())
       ];
 }

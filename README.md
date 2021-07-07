@@ -14,7 +14,7 @@ git clone https://github.com/Kdiaseng/covid_flutter_app.git
   <img src="screenshot/info_world.png" height= "550" width="300"> &nbsp;&nbsp;
    <img src="screenshot/loading.png" height= "550" width="300">&nbsp;&nbsp; 
    <img src="screenshot/list_country.png" height= "550" width="300">&nbsp;&nbsp;
-  <img src="screenshot/details.png" height= "550" width="300"> &nbsp;&nbsp;
+  <img src="screenshot/details_page.png" height= "550" width="300"> &nbsp;&nbsp;
 </p>
 
 ## Technologies

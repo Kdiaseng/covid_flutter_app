@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'components/card_welcome.dart';
-import 'components/container_information.dart';
-import 'home_controller.dart';
+import '../components/card_welcome.dart';
+import '../components/container_information.dart';
+import '../home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);

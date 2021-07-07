@@ -1,8 +1,9 @@
-import 'package:covid_flutter_app/app/modules/countries/countries_module.dart';
-import 'package:covid_flutter_app/app/modules/home/home_module.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'modules/start/start_page.dart';
+import 'modules/start/pagess/start_page.dart';
+import 'modules/start/submodules/countries/countries_module.dart';
+import 'modules/start/submodules/home/home_module.dart';
 
 class AppModule extends Module {
   @override

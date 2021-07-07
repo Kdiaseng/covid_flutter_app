@@ -1,8 +1,9 @@
-import 'package:covid_flutter_app/app/modules/home/components/card_info.dart';
-import 'package:covid_flutter_app/app/modules/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../home_controller.dart';
+import 'card_info.dart';
 
 class ContainerInformation extends StatefulWidget {
   const ContainerInformation({Key key}) : super(key: key);

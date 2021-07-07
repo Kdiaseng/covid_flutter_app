@@ -1,7 +1,7 @@
-import 'package:covid_flutter_app/app/modules/home/home_controller.dart';
 import 'package:covid_flutter_app/app/repository/worldometer_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'home_controller.dart';
 import 'home_page.dart';
 
 class HomeModule extends Module {

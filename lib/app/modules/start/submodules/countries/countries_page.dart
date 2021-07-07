@@ -1,10 +1,10 @@
-import 'package:covid_flutter_app/app/modules/countries/components/item_country.dart';
-import 'package:covid_flutter_app/app/modules/countries/country_controller.dart';
-import 'package:covid_flutter_app/app/modules/countries/components/item_country_loading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'components/item_country.dart';
+import 'components/item_country_loading.dart';
+import 'country_controller.dart';
 
 class CountriesPage extends StatefulWidget {
   const CountriesPage({Key key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:covid_flutter_app/app/modules/countries/models/country_model.dart';
+import 'package:covid_flutter_app/app/modules/start/submodules/countries/models/country_model.dart';
 import 'package:flutter/material.dart';
 
 class ItemCountry extends StatelessWidget {

@@ -1,5 +1,3 @@
-import 'package:covid_flutter_app/app/modules/countries/components/item_info.dart';
-import 'package:covid_flutter_app/app/modules/countries/country_controller.dart';
 import 'package:covid_flutter_app/app/utils/icons_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -7,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:skeleton_animation/skeleton_animation.dart';
 
 import 'components/item_info_loading.dart';
+import 'country_controller.dart';
 
 class CountryDetailsPage extends StatefulWidget {
   final String countryName;

@@ -1,9 +1,10 @@
-import 'package:covid_flutter_app/app/modules/countries/models/country_model.dart';
 import 'package:covid_flutter_app/app/repository/worldometer_repository.dart';
 import 'package:covid_flutter_app/app/utils/colors_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+
+import 'models/country_model.dart';
 
 part 'country_controller.g.dart';
 

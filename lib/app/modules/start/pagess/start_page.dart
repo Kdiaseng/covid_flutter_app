@@ -22,10 +22,11 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => Scaffold(
+        backgroundColor: Colors.blueAccent.withOpacity(.9),
         body: RouterOutlet(),
         bottomNavigationBar: CurvedNavigationBar(
           height: 60,
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.blueAccent.withOpacity(.4),
           index: controller.currentIndex,
           onTap: (index) {
             controller.changeCurrentIndex(index);

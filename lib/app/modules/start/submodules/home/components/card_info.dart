@@ -29,14 +29,14 @@ class CardInfo extends StatelessWidget {
               title,
               style: TextStyle(color: Colors.white),
             ),
-            _buildTextVale(),
+            _buildTextValue(),
           ],
         ),
       ),
     );
   }
 
-  _buildTextVale() => value != null
+  _buildTextValue() => value != null
       ? Text(
           value.toString(),
           style: TextStyle(

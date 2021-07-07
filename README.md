@@ -24,3 +24,4 @@ git clone https://github.com/Kdiaseng/covid_flutter_app.git
 - Skeleton animation - [skeleton_animation: ^0.1.4](https://pub.dev/packages/skeleton_animation)
 - Flutter 2.2.2
 - Dart 2.13.3
+- curved_navigation_bar: ^1.0.1
